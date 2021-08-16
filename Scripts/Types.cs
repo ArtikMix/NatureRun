@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class Types : MonoBehaviour
 {
-    public GameObject floor, death, water;
     [SerializeField] private GameObject free;
     [SerializeField] private Vector3 pos;
-    [SerializeField] private Transform player;
+    [SerializeField] private float first = -54.361f;
 
     private void Start()
     {
         StartCoroutine(SpawnBigFreePrefab());
     }
 
-    private void Update()
-    {
-        pos = new Vector3(player.position.x - 21.75f, 0f, 9.91f);
-    }
-
     IEnumerator SpawnBigFreePrefab()
     {
-        Instantiate(free, pos, player.transform.rotation);
+        first = first - 15.981f;
+        pos = new Vector3(first, 0f, 9.9f);
+        Instantiate(free, pos, Quaternion.identity);
         yield return new WaitForSeconds(1f);
+        StartCoroutine(SpawnBigFreePrefab());
     }
 }

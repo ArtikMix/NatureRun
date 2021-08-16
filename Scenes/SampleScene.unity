@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 1033380159}
   m_Layer: 0
   m_Name: Death
-  m_TagString: death
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,7 +544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033380158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.59, y: 1, z: 9.926}
+  m_LocalPosition: {x: -54.361, y: 0.61, z: 9.926}
   m_LocalScale: {x: 0.63205236, y: 1.1047777, z: 0.6361239}
   m_Children:
   - {fileID: 501295247847331128}
@@ -662,7 +662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1401770325
 Transform:
   m_ObjectHideFlags: 0
@@ -739,12 +739,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c31d7f82ac0664cb2780ef1f7d837e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: {fileID: 968889231547527970, guid: a65197faf5ebc244eb2941cb98e12d6b, type: 3}
-  death: {fileID: 8468114264415700089, guid: 64146bef70c604c4a94f959a751493f5, type: 3}
-  water: {fileID: 3770950879197575364, guid: 7a3700b7f98e99444949224f90b75c35, type: 3}
   free: {fileID: 7586757766928287436, guid: 51266c5f9704d3c4592b60297ce96e7c, type: 3}
   pos: {x: 0, y: 0, z: 0}
-  player: {fileID: 1768757069}
+  first: 0
 --- !u!1 &1560189650
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630308600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.7, y: 1, z: 5.76}
+  m_LocalPosition: {x: -38.38, y: 0.19, z: 9.91}
   m_LocalScale: {x: 0.63205236, y: 1.1047777, z: 0.6361239}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1625,7 +1622,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0e82a89a9331d7c4bb16ef322caffd53, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6676,6 +6672,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0000000000000000000000000000000000000000
+  floor: {fileID: 0}
+  water: {fileID: 0}
+  death: {fileID: 0}
 --- !u!4 &2809213635107953428
 Transform:
   m_ObjectHideFlags: 0
