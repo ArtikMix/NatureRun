@@ -6,7 +6,7 @@ public class Types : MonoBehaviour
 {
     [SerializeField] private GameObject free;
     [SerializeField] private Vector3 pos;
-    [SerializeField] private float first = -54.361f;
+    [SerializeField] private float first;
 
     private void Start()
     {
@@ -15,7 +15,7 @@ public class Types : MonoBehaviour
 
     IEnumerator SpawnBigFreePrefab()
     {
-        first = first - 15.981f;
+        first = first - 17.01f;
         pos = new Vector3(first, 0f, 9.9f);
         Instantiate(free, pos, Quaternion.identity);
         yield return new WaitForSeconds(1f);

@@ -30,6 +30,7 @@ public class PlayerLogic : MonoBehaviour
         if (collision.tag == "floor")
         {
             on_floor = true;
+            Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), transform.position, Quaternion.identity);
         }
         if (collision.tag == "death")
         {
@@ -38,6 +39,7 @@ public class PlayerLogic : MonoBehaviour
         if (collision.tag == "water")
         {
             on_floor = true;
+            Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), transform.position, Quaternion.identity);
             FindObjectOfType<WaterLogic>().water++;
         }
     }
