@@ -82,6 +82,7 @@ MonoBehaviour:
   floor: {fileID: 968889231547527970, guid: a65197faf5ebc244eb2941cb98e12d6b, type: 3}
   water: {fileID: 3770950879197575364, guid: 7a3700b7f98e99444949224f90b75c35, type: 3}
   death: {fileID: 8468114264415700089, guid: 64146bef70c604c4a94f959a751493f5, type: 3}
+  coin: {fileID: 7858344455063354200, guid: 02d84cdba29d4b5459a0243486defeca, type: 3}
 --- !u!1 &7586757767063565695
 GameObject:
   m_ObjectHideFlags: 0
