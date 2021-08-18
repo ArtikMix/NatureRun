@@ -10,7 +10,8 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField] private float jumpPower = 9f;
     private readonly Vector3 jumpDirection = Vector3.up;
     private Vector3 movingDirection;//постоянное движение вперёд и управление акселирометром
-    private float move_speed = 9f;
+    private readonly float move_speed = 9f;
+    private float acs_speed = 9f;
     public int coins;
     [SerializeField] private GameObject earth_touch, water_touch, fire_touch;
 
@@ -30,8 +31,8 @@ public class PlayerLogic : MonoBehaviour
             Jump();
         }
         Vector3 acs = Input.acceleration;
-        move_speed = 9.0f + Mathf.Abs(acs.x)/1000;
-        Debug.Log(move_speed);
+        acs_speed = 9f + Mathf.Abs(acs.x)/100;
+        //Debug.Log(acs_speed);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -41,9 +42,11 @@ public class PlayerLogic : MonoBehaviour
             on_floor = true;
             GameObject g = Instantiate(earth_touch, transform.position, transform.rotation);
             Destroy(g, 8f);
+            Debug.Log(transform.position);
         }
         if (collision.tag == "death")
         {
+            Debug.Log(transform.position);
             Death();
         }
         if (collision.tag == "water")
@@ -52,6 +55,7 @@ public class PlayerLogic : MonoBehaviour
             FindObjectOfType<WaterLogic>().water++;
             GameObject g = Instantiate(water_touch, transform.position, transform.rotation);
             Destroy(g, 8f);
+            Debug.Log(transform.position);
         }
         if (collision.tag == "coin")
         {
@@ -71,8 +75,8 @@ public class PlayerLogic : MonoBehaviour
     public void FixedUpdate()
     {
         Vector3 acs = Input.acceleration;
-        movingDirection = new Vector3(-1, 0, acs.x);
-        transform.Translate(movingDirection * move_speed * Time.deltaTime);
+        movingDirection = new Vector3(-1 * move_speed, 0, acs.x * acs_speed);
+        transform.Translate(movingDirection * Time.deltaTime);
     }
 
     private void Jump()//реализация прыжка, похожего на отскакивание
