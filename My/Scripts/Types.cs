@@ -15,10 +15,10 @@ public class Types : MonoBehaviour
 
     IEnumerator SpawnBigFreePrefab()
     {
-        first = first - 18f;
+        first = first - 16.85f;
         pos = new Vector3(first, 0f, 9.9f);
         Instantiate(free, pos, Quaternion.identity);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.4f);
         StartCoroutine(SpawnBigFreePrefab());
     }
 }

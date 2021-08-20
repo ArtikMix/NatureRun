@@ -59,6 +59,24 @@ public class FreeSpaceLogic : MonoBehaviour
                     break;
             }
         }
+        foreach(Transform cube in transform)
+        {
+            if (cube.name == "Cube")
+                Destroy(cube.gameObject);
+        }
+        //int c = 0;
+        //foreach (Transform child in transform)
+        //{
+        //    if (child.gameObject.)
+        //    {
+        //        c++;
+        //    }
+        //}
+        //if (c == 0)
+        //{
+        //    //Instantiate(floor, transform.position, Quaternion.identity);
+        //    transform.GetChild(UnityEngine.Random.Range(0, 6)).gameObject.SetActive(true);
+        //}
     }
 
     private void Update()

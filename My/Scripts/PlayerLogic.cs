@@ -28,6 +28,10 @@ public class PlayerLogic : MonoBehaviour
         Vector3 acs = Input.acceleration;
         acs_speed = 9f + Mathf.Abs(acs.x)/100;
         //Debug.Log(acs_speed);
+        if (transform.position.y < -2f)
+        {
+            Death();
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -37,11 +41,11 @@ public class PlayerLogic : MonoBehaviour
             on_floor = true;
             GameObject g = Instantiate(earth_touch, transform.position, transform.rotation);
             Destroy(g, 8f);
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
         }
         if (collision.tag == "death")
         {
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
             Death();
         }
         if (collision.tag == "water")
@@ -50,7 +54,7 @@ public class PlayerLogic : MonoBehaviour
             FindObjectOfType<WaterLogic>().water++;
             GameObject g = Instantiate(water_touch, transform.position, transform.rotation);
             Destroy(g, 8f);
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
         }
         if (collision.tag == "coin")
         {
