@@ -10,7 +10,7 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField] private float jumpPower = 9f;
     private readonly Vector3 jumpDirection = Vector3.up;
     private Vector3 movingDirection;//постоянное движение вперёд и управление акселирометром
-    private readonly float move_speed = 9f;
+    private readonly float move_speed = 9.1f;
     private float acs_speed = 9f;
     [SerializeField] private GameObject earth_touch, water_touch, fire_touch;
 
