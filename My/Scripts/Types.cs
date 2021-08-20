@@ -15,7 +15,7 @@ public class Types : MonoBehaviour
 
     IEnumerator SpawnBigFreePrefab()
     {
-        first = first - 16.85f;
+        first = first - 16.9f;
         pos = new Vector3(first, 0f, 9.9f);
         Instantiate(free, pos, Quaternion.identity);
         yield return new WaitForSeconds(1.4f);

@@ -18,7 +18,7 @@ GameObject:
   m_TagString: water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &3770950879197575361
 Transform:
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3770950879197575364}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.831, y: 1, z: 5.76}
-  m_LocalScale: {x: 1.0316, y: 1.1047777, z: 0.6361239}
+  m_LocalPosition: {x: -36.695, y: 1, z: 5.76}
+  m_LocalScale: {x: 1.2975554, y: 1.1047777, z: 0.6361239}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

@@ -10,8 +10,8 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField] private float jumpPower = 9f;
     private readonly Vector3 jumpDirection = Vector3.up;
     private Vector3 movingDirection;//постоянное движение вперёд и управление акселирометром
-    private readonly float move_speed = 9.1f;
-    private float acs_speed = 9f;
+    private const float move_speed = 8.975f;
+    private float acs_speed = 8.9f;
     [SerializeField] private GameObject earth_touch, water_touch, fire_touch;
 
     private void Start()
@@ -32,6 +32,10 @@ public class PlayerLogic : MonoBehaviour
         {
             Death();
         }
+        if (transform.position.z<=1.82f || transform.position.z >= 19.22f)
+        {
+            Death();
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -40,7 +44,7 @@ public class PlayerLogic : MonoBehaviour
         {
             on_floor = true;
             GameObject g = Instantiate(earth_touch, transform.position, transform.rotation);
-            Destroy(g, 8f);
+            Destroy(g, 4f);
             //Debug.Log(transform.position);
         }
         if (collision.tag == "death")
@@ -53,7 +57,7 @@ public class PlayerLogic : MonoBehaviour
             on_floor = true;
             FindObjectOfType<WaterLogic>().water++;
             GameObject g = Instantiate(water_touch, transform.position, transform.rotation);
-            Destroy(g, 8f);
+            Destroy(g, 4f);
             //Debug.Log(transform.position);
         }
         if (collision.tag == "coin")

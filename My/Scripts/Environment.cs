@@ -6,7 +6,7 @@ public class Environment : MonoBehaviour
 {
     private void Update()
     {
-        if (transform.position.x >= GameObject.FindGameObjectWithTag("Player").transform.position.x + 75f)
+        if (transform.position.x >= GameObject.FindGameObjectWithTag("Player").transform.position.x + 85f)
             Destroy(gameObject);
     }
 }
