@@ -13,10 +13,12 @@ public class PlayerLogic : MonoBehaviour
     private const float move_speed = 8.975f;
     private float acs_speed = 8.9f;
     [SerializeField] private GameObject earth_touch, water_touch, fire_touch;
+    PlayerAnim anim;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = FindObjectOfType<PlayerAnim>();
     }
     private void Update()
     {
@@ -45,6 +47,8 @@ public class PlayerLogic : MonoBehaviour
             on_floor = true;
             GameObject g = Instantiate(earth_touch, transform.position, transform.rotation);
             Destroy(g, 4f);
+            anim.StartAnim();
+
             //Debug.Log(transform.position);
         }
         if (collision.tag == "death")
@@ -58,6 +62,7 @@ public class PlayerLogic : MonoBehaviour
             FindObjectOfType<WaterLogic>().UpdateBucket();
             GameObject g = Instantiate(water_touch, transform.position, transform.rotation);
             Destroy(g, 4f);
+            anim.StartAnim();
             //Debug.Log(transform.position);
         }
         if (collision.tag == "coin")
