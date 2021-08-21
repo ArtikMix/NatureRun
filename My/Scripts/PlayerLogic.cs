@@ -55,14 +55,14 @@ public class PlayerLogic : MonoBehaviour
         if (collision.tag == "water")
         {
             on_floor = true;
-            FindObjectOfType<WaterLogic>().water++;
+            FindObjectOfType<WaterLogic>().UpdateBucket();
             GameObject g = Instantiate(water_touch, transform.position, transform.rotation);
             Destroy(g, 4f);
             //Debug.Log(transform.position);
         }
         if (collision.tag == "coin")
         {
-            FindObjectOfType<CoinLogic>().coins++;
+            FindObjectOfType<CoinLogic>().UpdateCoins();
             PlayerPrefs.SetInt("coins", FindObjectOfType<CoinLogic>().coins);
             Destroy(collision.gameObject);
         }

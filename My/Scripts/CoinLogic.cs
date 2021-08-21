@@ -13,9 +13,13 @@ public class CoinLogic : MonoBehaviour
             coins = PlayerPrefs.GetInt("coins");
         else
             coins = 0;
+        c_t.text = "x " + coins.ToString();
     }
-    private void Update()
+
+    public void UpdateCoins()
     {
+        coins++;
+        PlayerPrefs.SetInt("coins", coins);
         c_t.text = "x " + coins.ToString();
     }
 }
