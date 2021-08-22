@@ -27,4 +27,9 @@ public class PauseButtons : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Again()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

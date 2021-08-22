@@ -28,7 +28,7 @@ public class PlayerLogic : MonoBehaviour
             Jump();
         }
         Vector3 acs = Input.acceleration;
-        acs_speed = 9f + Mathf.Abs(acs.x)/100;
+        acs_speed = 9.0f - Mathf.Abs(acs.x);
         //Debug.Log(acs_speed);
         if (transform.position.y < -2f)
         {
@@ -45,8 +45,8 @@ public class PlayerLogic : MonoBehaviour
         if (collision.tag == "floor")
         {
             on_floor = true;
-            GameObject g = Instantiate(earth_touch, transform.position, transform.rotation);
-            Destroy(g, 4f);
+            //GameObject g = Instantiate(earth_touch, transform.position, transform.rotation);
+            //Destroy(g, 4f);
             anim.StartAnim();
 
             //Debug.Log(transform.position);
@@ -83,7 +83,7 @@ public class PlayerLogic : MonoBehaviour
     public void FixedUpdate()
     {
         Vector3 acs = Input.acceleration;
-        movingDirection = new Vector3(-1 * move_speed, 0, acs.x * acs_speed);
+        movingDirection = new Vector3(-1 * move_speed, 0, acs.x * acs_speed * 3f);
         transform.Translate(movingDirection * Time.deltaTime);
     }
 

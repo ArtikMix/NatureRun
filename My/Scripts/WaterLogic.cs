@@ -18,4 +18,10 @@ public class WaterLogic : MonoBehaviour
         water++;
         water_text.text = "x " + water.ToString();
     }
+
+    public void UpdateBucket_()
+    {
+        water--;
+        water_text.text = "x " + water.ToString();
+    }
 }

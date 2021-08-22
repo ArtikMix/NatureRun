@@ -17,7 +17,7 @@ public class CubeTypeConverter : MonoBehaviour, IPointerClickHandler
         if (water.water >= 1)
         {
             transform.gameObject.tag = "floor";
-            water.water--;
+            water.UpdateBucket_();
             transform.GetChild(0).gameObject.SetActive(false);
         }
     }
