@@ -2,10 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ToggleLogic : MonoBehaviour
 {
     [SerializeField] Toggle d, r, f;
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("day") && PlayerPrefs.GetInt("day") == 1)
+        {
+            d.isOn = true;
+        }
+        else
+        {
+            d.isOn = false;
+        }
+        if (PlayerPrefs.HasKey("fog") && PlayerPrefs.GetInt("fog") == 1)
+        {
+            f.isOn = true;
+        }
+        else
+        {
+            f.isOn = false;
+        }
+        if (PlayerPrefs.HasKey("rain") && PlayerPrefs.GetInt("rain") == 1)
+        {
+            r.isOn = true;
+        }
+        else
+        {
+            r.isOn = false;
+        }
+    }
     public void DayToggle()
     {
         if (PlayerPrefs.HasKey("day_buy") && PlayerPrefs.GetInt("day_buy") == 1)
@@ -20,6 +49,10 @@ public class ToggleLogic : MonoBehaviour
                 d.isOn = false;
                 PlayerPrefs.SetInt("day", 0);
             }
+        }
+        else
+        {
+            d.isOn = false;
         }
     }
 
@@ -38,6 +71,10 @@ public class ToggleLogic : MonoBehaviour
                 PlayerPrefs.SetInt("fog", 0);
             }
         }
+        else
+        {
+            f.isOn = false;
+        }
     }
 
     public void RainToggle()
@@ -54,6 +91,10 @@ public class ToggleLogic : MonoBehaviour
                 r.isOn = false;
                 PlayerPrefs.SetInt("rain", 0);
             }
+        }
+        else
+        {
+            r.isOn = false;
         }
     }
 }
