@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    [SerializeField] private GameObject shop, settings, main, day, rain, fog, pause, start;
+    [SerializeField] private GameObject shop, settings, main, day, rain, fog, pause, start, pause_button;
     public bool starting = false;
 
     private void Start()
     {
         start.SetActive(true);
+        pause_button.SetActive(false);
         if (PlayerPrefs.GetInt("day_buy") == 1)
         {
             day.SetActive(false);
@@ -30,6 +31,8 @@ public class MainMenuButtons : MonoBehaviour
     {
         start.SetActive(false);
         starting = true;
+        main.SetActive(false);
+        pause_button.SetActive(true);
     }
 
     public void ShopButton()
@@ -109,11 +112,13 @@ public class MainMenuButtons : MonoBehaviour
     {
         Time.timeScale = 0f;
         pause.SetActive(true);
+        main.SetActive(true);
     }
 
     public void Continue()
     {
         pause.SetActive(false);
         Time.timeScale = 1f;
+        main.SetActive(false);
     }
 }

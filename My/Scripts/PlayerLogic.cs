@@ -28,6 +28,7 @@ public class PlayerLogic : MonoBehaviour
         else
             murder = 0;
         rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
         anim = FindObjectOfType<PlayerAnim>();
     }
     private void Update()
@@ -103,6 +104,7 @@ public class PlayerLogic : MonoBehaviour
     {
         if (menu.starting)
         {
+            rb.useGravity = true;
             Vector3 acs = Input.acceleration;
             movingDirection = new Vector3(-1 * move_speed, 0, acs.x * acs_speed * 3f);
             transform.Translate(movingDirection * Time.deltaTime);
