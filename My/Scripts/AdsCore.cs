@@ -19,7 +19,7 @@ public class AdsCore : MonoBehaviour
         #endregion
     }
 
-    public void ShowAdsVideo(string placementID)
+    public static void ShowAdsVideo(string placementID)
     {
         if (Advertisement.IsReady())
         {

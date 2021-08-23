@@ -16,12 +16,14 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField] private GameObject earth_touch, water_touch, fire_touch;
     PlayerAnim anim;
     private int murder;
+    MainMenuButtons menu;
 
     private void Start()
     {
+        menu = FindObjectOfType<MainMenuButtons>();
         if (PlayerPrefs.HasKey("murder"))
         {
-            murder = PlayerPrefs.GetInt("muder");
+            murder = PlayerPrefs.GetInt("murder");
         }
         else
             murder = 0;
@@ -56,7 +58,7 @@ public class PlayerLogic : MonoBehaviour
             //GameObject g = Instantiate(earth_touch, transform.position, transform.rotation);
             //Destroy(g, 4f);
             anim.StartAnim();
-
+            FindObjectOfType<AudioManager>().Play("dirt");
             //Debug.Log(transform.position);
         }
         if (collision.tag == "death")
@@ -77,6 +79,7 @@ public class PlayerLogic : MonoBehaviour
         {
             FindObjectOfType<CoinLogic>().UpdateCoins();
             PlayerPrefs.SetInt("coins", FindObjectOfType<CoinLogic>().coins);
+            FindObjectOfType<AudioManager>().Play("coin");
             Destroy(collision.gameObject);
         }
     }
@@ -89,17 +92,21 @@ public class PlayerLogic : MonoBehaviour
         Destroy(g, 3f);
         if (murder % 3 == 0)
         {
-            Debug.Log("adddd");
-            FindObjectOfType<AdsCore>().ShowAdsVideo("Interstitial_Android");
+            Debug.Log("AD");
+            AdsCore.ShowAdsVideo("Interstitial_Android");
         }
+        FindObjectOfType<AudioManager>().Play("death");
         Destroy(gameObject);
     }
 
     public void FixedUpdate()
     {
-        Vector3 acs = Input.acceleration;
-        movingDirection = new Vector3(-1 * move_speed, 0, acs.x * acs_speed * 3f);
-        transform.Translate(movingDirection * Time.deltaTime);
+        if (menu.starting)
+        {
+            Vector3 acs = Input.acceleration;
+            movingDirection = new Vector3(-1 * move_speed, 0, acs.x * acs_speed * 3f);
+            transform.Translate(movingDirection * Time.deltaTime);
+        }
     }
 
     private void Jump()//реализация прыжка, похожего на отскакивание
