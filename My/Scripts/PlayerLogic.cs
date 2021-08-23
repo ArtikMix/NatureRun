@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.EventSystems;
 
 public class PlayerLogic : MonoBehaviour
@@ -14,9 +15,16 @@ public class PlayerLogic : MonoBehaviour
     private float acs_speed = 8.9f;
     [SerializeField] private GameObject earth_touch, water_touch, fire_touch;
     PlayerAnim anim;
+    private int murder;
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("murder"))
+        {
+            murder = PlayerPrefs.GetInt("muder");
+        }
+        else
+            murder = 0;
         rb = GetComponent<Rigidbody>();
         anim = FindObjectOfType<PlayerAnim>();
     }
@@ -75,9 +83,16 @@ public class PlayerLogic : MonoBehaviour
 
     public void Death()
     {
-        Destroy(gameObject);
         GameObject g = Instantiate(fire_touch, transform.position, transform.rotation);
+        murder++;
+        PlayerPrefs.SetInt("murder", murder);
         Destroy(g, 3f);
+        if (murder % 3 == 0)
+        {
+            Debug.Log("adddd");
+            FindObjectOfType<AdsCore>().ShowAdsVideo("Interstitial_Android");
+        }
+        Destroy(gameObject);
     }
 
     public void FixedUpdate()
