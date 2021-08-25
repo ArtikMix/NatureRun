@@ -90,12 +90,12 @@ public class PlayerLogic : MonoBehaviour
         GameObject g = Instantiate(fire_touch, transform.position, transform.rotation);
         murder++;
         PlayerPrefs.SetInt("murder", murder);
-        Destroy(g, 3f);
         if (murder % 3 == 0)
         {
             Debug.Log("AD");
             AdsCore.ShowAdsVideo("Interstitial_Android");
         }
+        Destroy(g, 3f);
         FindObjectOfType<AudioManager>().Play("death");
         Destroy(gameObject);
     }

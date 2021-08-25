@@ -7,9 +7,11 @@ using UnityEngine.EventSystems;
 public class ToggleLogic : MonoBehaviour
 {
     [SerializeField] Toggle d, r, f;
+    GraphicMods gx;
 
     private void Start()
     {
+        gx = FindObjectOfType<GraphicMods>();
         if (PlayerPrefs.HasKey("day") && PlayerPrefs.GetInt("day") == 1)
         {
             d.isOn = true;
@@ -37,6 +39,7 @@ public class ToggleLogic : MonoBehaviour
     }
     public void DayToggle()
     {
+        Debug.Log(PlayerPrefs.GetInt("day_buy"));
         if (PlayerPrefs.HasKey("day_buy") && PlayerPrefs.GetInt("day_buy") == 1)
         {
             if (d.isOn == false)
@@ -54,6 +57,7 @@ public class ToggleLogic : MonoBehaviour
         {
             d.isOn = false;
         }
+        gx.UpdateStates();
     }
 
     public void FogToggle()
@@ -75,6 +79,7 @@ public class ToggleLogic : MonoBehaviour
         {
             f.isOn = false;
         }
+        gx.UpdateStates();
     }
 
     public void RainToggle()
@@ -96,5 +101,6 @@ public class ToggleLogic : MonoBehaviour
         {
             r.isOn = false;
         }
+        gx.UpdateStates();
     }
 }
