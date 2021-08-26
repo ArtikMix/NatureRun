@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 
 public class ToggleLogic : MonoBehaviour
 {
-    [SerializeField] Toggle d, r, f;
+    [SerializeField] private GameObject day, rain, fog;
+    private bool d, r, f;
     GraphicMods gx;
 
     private void Start()
@@ -14,49 +15,66 @@ public class ToggleLogic : MonoBehaviour
         gx = FindObjectOfType<GraphicMods>();
         if (PlayerPrefs.HasKey("day") && PlayerPrefs.GetInt("day") == 1)
         {
-            d.isOn = true;
+            day.transform.GetChild(0).gameObject.SetActive(true);
+            d = true;
         }
         else
         {
-            d.isOn = false;
+            day.transform.GetChild(0).gameObject.SetActive(false);
+            d = false;
         }
         if (PlayerPrefs.HasKey("fog") && PlayerPrefs.GetInt("fog") == 1)
         {
-            f.isOn = true;
+            fog.transform.GetChild(0).gameObject.SetActive(true);
+            f = true;
         }
         else
         {
-            f.isOn = false;
+            fog.transform.GetChild(0).gameObject.SetActive(false);
+            f = false;
         }
         if (PlayerPrefs.HasKey("rain") && PlayerPrefs.GetInt("rain") == 1)
         {
-            r.isOn = true;
+            rain.transform.GetChild(0).gameObject.SetActive(true);
+            r = true;
         }
         else
         {
-            r.isOn = false;
+            rain.transform.GetChild(0).gameObject.SetActive(true);
+            r = false;
         }
+        gx.UpdateStates();
     }
     public void DayToggle()
     {
         Debug.Log(PlayerPrefs.GetInt("day_buy"));
-        if (PlayerPrefs.HasKey("day_buy") && PlayerPrefs.GetInt("day_buy") == 1)
+        if (PlayerPrefs.HasKey("day_buy") == true && PlayerPrefs.GetInt("day_buy") == 1)
         {
-            if (d.isOn == false)
+            Debug.Log("haskeyday");
+            if (d == false)
             {
-                d.isOn = true;
+                Debug.Log("d false");
+                day.transform.GetChild(0).gameObject.SetActive(true);
                 PlayerPrefs.SetInt("day", 1);
+                PlayerPrefs.Save();
+                d = true;
             }
-            if (d.isOn == true)
+            if (d == true)
             {
-                d.isOn = false;
+                Debug.Log("d true");
+                day.transform.GetChild(0).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("day", 0);
+                PlayerPrefs.Save();
+                d = false;
             }
         }
         else
         {
-            d.isOn = false;
+            Debug.Log("hasn'tkeyday");
+            day.transform.GetChild(0).gameObject.SetActive(false);
+            d = false;
         }
+        Debug.Log(PlayerPrefs.GetInt("day"));
         gx.UpdateStates();
     }
 
@@ -64,20 +82,25 @@ public class ToggleLogic : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("fog_buy") && PlayerPrefs.GetInt("fog_buy") == 1)
         {
-            if (f.isOn == false)
+            if (f == false)
             {
-                f.isOn = true;
+                fog.transform.GetChild(0).gameObject.SetActive(true);
                 PlayerPrefs.SetInt("fog", 1);
+                PlayerPrefs.Save();
+                f = true;
             }
-            if (f.isOn == true)
+            if (f == true)
             {
-                f.isOn = false;
+                fog.transform.GetChild(0).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("fog", 0);
+                PlayerPrefs.Save();
+                f = false;
             }
         }
         else
         {
-            f.isOn = false;
+            fog.transform.GetChild(0).gameObject.SetActive(false);
+            f = false;
         }
         gx.UpdateStates();
     }
@@ -86,20 +109,25 @@ public class ToggleLogic : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("rain_buy") && PlayerPrefs.GetInt("rain_buy") == 1)
         {
-            if (r.isOn == false)
+            if (r == false)
             {
-                r.isOn = true;
+                rain.transform.GetChild(0).gameObject.SetActive(true);
                 PlayerPrefs.SetInt("rain", 1);
+                PlayerPrefs.Save();
+                r = true;
             }
-            if (r.isOn == true)
+            if (r == true)
             {
-                r.isOn = false;
+                rain.transform.GetChild(0).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("rain", 0);
+                PlayerPrefs.Save();
+                r = false;
             }
         }
         else
         {
-            r.isOn = false;
+            rain.transform.GetChild(0).gameObject.SetActive(false);
+            r = false;
         }
         gx.UpdateStates();
     }

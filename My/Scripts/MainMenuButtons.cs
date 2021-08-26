@@ -75,6 +75,7 @@ public class MainMenuButtons : MonoBehaviour
             PlayerPrefs.SetInt("day_buy", 1);
             day.SetActive(false);
             PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") - 150);
+            PlayerPrefs.Save();
         }
     }
 
@@ -85,6 +86,7 @@ public class MainMenuButtons : MonoBehaviour
             PlayerPrefs.SetInt("fog_buy", 1);
             rain.SetActive(false);
             PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") - 3000);
+            PlayerPrefs.Save();
         }
     }
 
@@ -95,6 +97,7 @@ public class MainMenuButtons : MonoBehaviour
             PlayerPrefs.SetInt("rain_buy", 1);
             rain.SetActive(false);
             PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") - 1000);
+            PlayerPrefs.Save();
         }
     }
     #endregion
