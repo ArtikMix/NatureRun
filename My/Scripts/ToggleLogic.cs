@@ -10,7 +10,7 @@ public class ToggleLogic : MonoBehaviour
     private bool d, r, f;
     GraphicMods gx;
 
-    private void Start()
+    public void Start()
     {
         gx = FindObjectOfType<GraphicMods>();
         if (PlayerPrefs.HasKey("day") && PlayerPrefs.GetInt("day") == 1)
@@ -40,7 +40,7 @@ public class ToggleLogic : MonoBehaviour
         }
         else
         {
-            rain.transform.GetChild(0).gameObject.SetActive(true);
+            rain.transform.GetChild(0).gameObject.SetActive(false);
             r = false;
         }
         gx.UpdateStates();
@@ -50,17 +50,21 @@ public class ToggleLogic : MonoBehaviour
         Debug.Log(PlayerPrefs.GetInt("day_buy"));
         if (PlayerPrefs.HasKey("day_buy") == true && PlayerPrefs.GetInt("day_buy") == 1)
         {
+            bool once = true;
             Debug.Log("haskeyday");
-            if (d == false)
+            if (d == false && once==true)
             {
+                once = false;
                 Debug.Log("d false");
                 day.transform.GetChild(0).gameObject.SetActive(true);
                 PlayerPrefs.SetInt("day", 1);
+                Debug.Log(PlayerPrefs.GetInt("day"));
                 PlayerPrefs.Save();
                 d = true;
             }
-            if (d == true)
+            if (d == true && once == true)
             {
+                once = false;
                 Debug.Log("d true");
                 day.transform.GetChild(0).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("day", 0);
@@ -82,15 +86,18 @@ public class ToggleLogic : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("fog_buy") && PlayerPrefs.GetInt("fog_buy") == 1)
         {
-            if (f == false)
+            bool once = true;
+            if (f == false && once == true)
             {
+                once = false;
                 fog.transform.GetChild(0).gameObject.SetActive(true);
                 PlayerPrefs.SetInt("fog", 1);
                 PlayerPrefs.Save();
                 f = true;
             }
-            if (f == true)
+            if (f == true && once == true)
             {
+                once = false;
                 fog.transform.GetChild(0).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("fog", 0);
                 PlayerPrefs.Save();
@@ -109,15 +116,18 @@ public class ToggleLogic : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("rain_buy") && PlayerPrefs.GetInt("rain_buy") == 1)
         {
-            if (r == false)
+            bool once = true;
+            if (r == false && once == true)
             {
+                once = false;
                 rain.transform.GetChild(0).gameObject.SetActive(true);
                 PlayerPrefs.SetInt("rain", 1);
                 PlayerPrefs.Save();
                 r = true;
             }
-            if (r == true)
+            if (r == true && once == true)
             {
+                once = false;
                 rain.transform.GetChild(0).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("rain", 0);
                 PlayerPrefs.Save();
