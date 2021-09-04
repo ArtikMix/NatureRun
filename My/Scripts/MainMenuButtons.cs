@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    [SerializeField] private GameObject shop, settings, main, day, rain, fog, pause, start, pause_button;
+    [SerializeField] private GameObject shop, settings, main, day, rain, fog, pause, start, pause_button, guide;
     public bool starting = false;
 
     private void Start()
@@ -33,6 +33,7 @@ public class MainMenuButtons : MonoBehaviour
         starting = true;
         main.SetActive(false);
         pause_button.SetActive(true);
+        guide.SetActive(true);
     }
 
     public void ShopButton()
